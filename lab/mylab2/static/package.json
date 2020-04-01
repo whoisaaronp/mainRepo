@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "boostrap": "^2.0.0",
     "bootstrap": "^4.4.1",
     "chart.js": "^2.9.3",
     "feather-icons": "^4.26.0",

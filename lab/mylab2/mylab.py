@@ -1,8 +1,7 @@
-from flask import Flask, render template
+from flask import Flask, render_template
 import json
-import requests
+# import requests
 from datetime import datetime
-import pytz
 
 
 app = Flask(__name__)
@@ -14,22 +13,22 @@ def index():
 	return render_template('home.html')
 
 # set up your barchart
-@app.route('/bar_chart')
+@app.route('/bar-chart')
 def bar_chart():
 	return render_template('barchart.html')
 
 # set up your linechart
-@app.route('/line_chart')
+@app.route('/line-chart')
 def line_chart():
 	return render_template('linechart.html')
 
 # set up your piechart
-@app.route('/pie_chart')
+@app.route('/pie-chart')
 def pie_chart():
 	return render_template('piechart.html')
 
 # set up your bubblechart
-@app.route('/bubble_chart')
+@app.route('/bubble-chart')
 def bubble_chart():
 	return render_template('bubblechart.html')
 
