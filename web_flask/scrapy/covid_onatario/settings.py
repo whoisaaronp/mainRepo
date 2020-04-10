@@ -68,6 +68,15 @@ ROBOTSTXT_OBEY = True
 #    'covid_onatario.pipelines.CovidOnatarioPipeline': 300,
 #}
 
+MONGODB_SERVER = "#" #mongoatlas server name from atlas
+MONGODB_PORT = 
+MONGODB_DB = "covid_ontario"
+MONGODB_CASE_COLLECTION = "cases"
+MONGODB_STATUS_COLLECTION = "status"
+MONGODB_USER = "root"
+MONGODB_PASS = "example"
+
+
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
 #AUTOTHROTTLE_ENABLED = True

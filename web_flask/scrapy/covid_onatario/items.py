@@ -11,4 +11,10 @@ import scrapy
 class CovidOnatarioItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
+    deceased = scrapy.Field()
+    confirmed = scrapy.Field()
+    pending = scrapy.Field()
+    resolved = scrapy.Feild()
+    total = scrapy.Feild()
+    date = scrapy.Feild()
     pass
