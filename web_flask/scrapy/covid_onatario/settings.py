@@ -64,14 +64,13 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'covid_onatario.pipelines.CovidOnatarioPipeline': 300,
-#}
+ITEM_PIPELINES = {
+   'covid_onatario.pipelines.MongoDBPipeline': 300,
+}
 
-MONGODB_SERVER = "#" #mongoatlas server name from atlas
-MONGODB_PORT = 
+MONGODB_SERVER = "mongodb+srv://juniha:Rodyroem@cluster0-naqor.mongodb.net/test?authSource=admin&replicaSet=Cluster0-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true" #mongoatlas server name from atlas
+MONGODB_PORT = 27017
 MONGODB_DB = "covid_ontario"
-MONGODB_CASE_COLLECTION = "cases"
 MONGODB_STATUS_COLLECTION = "status"
 MONGODB_USER = "root"
 MONGODB_PASS = "example"
