@@ -9,7 +9,8 @@ import pymongo
 from urllib.parse import quote_plus
 from scrapy.utis.project import get_project_settings
 from scrapy.exceptions import Dropitem
-from covid_ontario.items import CovidOntarioStatusItem
+from covid_ontario.items import CovidOntarioItem
+
 
 class MongoDBPipeline(object):
     def __init__(self):
@@ -27,7 +28,7 @@ class MongoDBPipeline(object):
                 valid = False
                 raise DropItem("Missing {0}!".format(data))
         if valid:
-            if isinstance(item, CovidOntarioStatusItem)
+            if isinstance(item, CovidOntarioItem)
             self.collection.update(dict(item))
 
         return item

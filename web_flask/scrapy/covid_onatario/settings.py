@@ -9,7 +9,7 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'covid_onatario'
+BOT_NAME = 'covid_ontario'
 
 SPIDER_MODULES = ['covid_onatario.spiders']
 NEWSPIDER_MODULE = 'covid_onatario.spiders'
@@ -17,6 +17,7 @@ NEWSPIDER_MODULE = 'covid_onatario.spiders'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'covid_onatario (+http://www.yourdomain.com)'
+USER_AGENT = 'gogglebot'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
