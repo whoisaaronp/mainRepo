@@ -36,3 +36,14 @@ def bubble_chart():
 	return render_template('bubblechart.html')
 
 
+@app.route('/fetch')
+def fetch():
+	params = {
+		'spider_name': 'ontario',
+		'start_requests': True
+
+	}
+	response = requests.get('http://scrapy:9000/crawl.json', params)
+	return response.text
+
+	
