@@ -10,10 +10,31 @@ app = Flask(__name__)
 
 # mongodb+srv://juniha:Rodyroem@cluster0-naqor.mongodb.net/test?authSource=admin&replicaSet=Cluster0-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true
 
+
+# time filter
+@app.template_filter('strftime')
+def _jinja2_filter_datetime(date,fmt=None):
+    date = datetime.fromtimestamp(date)
+    native = date.replace(tzinfo=None)
+    format = '%Y-%m-%d'
+    return native.strftime(format)
+
 # set up your route
 @app.route('/')
 def index():
-	return render_template('home.html')
+    status = monogo.db.status
+    status_data = []
+    for s in status.find().sort("date"):
+        status_data.append({
+			'date: _jinja2_filter_datetime(int(s.get('date'))),
+			'deceased:s.get('deceased',0),
+			'confirmed:s.get('confirmed',0),
+			'resolved:s.get('resolved',0),
+			'pending:s.get('pending',0),
+			'total:s.get('total',0),
+
+		})
+	return render_template('home.html', ontario_data = status_data)
 
 # set up your barchart
 @app.route('/bar_chart')
