@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Scrapy settings for covid_onatario project
+# Scrapy settings for covid_ontario project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -11,12 +11,12 @@
 
 BOT_NAME = 'covid_ontario'
 
-SPIDER_MODULES = ['covid_onatario.spiders']
-NEWSPIDER_MODULE = 'covid_onatario.spiders'
+SPIDER_MODULES = ['covid_ontario.spiders']
+NEWSPIDER_MODULE = 'covid_ontario.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'covid_onatario (+http://www.yourdomain.com)'
+#USER_AGENT = 'covid_ontario (+http://www.yourdomain.com)'
 USER_AGENT = 'gogglebot'
 
 # Obey robots.txt rules
@@ -48,13 +48,13 @@ ROBOTSTXT_OBEY = True
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    'covid_onatario.middlewares.CovidOnatarioSpiderMiddleware': 543,
+#    'covid_ontario.middlewares.CovidOntarioSpiderMiddleware': 543,
 #}
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    'covid_onatario.middlewares.CovidOnatarioDownloaderMiddleware': 543,
+#    'covid_ontario.middlewares.CovidOntarioDownloaderMiddleware': 543,
 #}
 
 # Enable or disable extensions
@@ -66,7 +66,7 @@ ROBOTSTXT_OBEY = True
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-   'covid_onatario.pipelines.MongoDBPipeline': 300,
+   'covid_ontario.pipelines.MongoDBPipeline': 300,
 }
 
 MONGODB_SERVER = "mongodb+srv://juniha:Rodyroem@cluster0-naqor.mongodb.net/test?authSource=admin&replicaSet=Cluster0-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true" #mongoatlas server name from atlas
@@ -75,7 +75,6 @@ MONGODB_DB = "covid_ontario"
 MONGODB_STATUS_COLLECTION = "status"
 MONGODB_USER = "root"
 MONGODB_PASS = "example"
-
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
