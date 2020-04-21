@@ -5,10 +5,9 @@
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 import pymongo
-
 from urllib.parse import quote_plus
-from scrapy.utis.project import get_project_settings
-from scrapy.exceptions import Dropitem
+from scrapy.utils.project import get_project_settings
+from scrapy.exceptions import DropItem
 from covid_ontario.items import CovidOntarioItem
 
 
@@ -19,7 +18,7 @@ class MongoDBPipeline(object):
             settings['MONGODB_PASS']), settings['MONGODB_SERVER'], settings['MONGODB_PORT'])
         connection = pymongo.MongoClient(uri)
         db = connection[settings['MONGODB_DB']]
-        self.collection = db[settings['MONGODB_COLLECTION']]
+        self.collection = db[settings['MONGODB_STATUS_COLLECTION']]
 
     def process_item(self, item, spider):
         valid = True
@@ -28,7 +27,7 @@ class MongoDBPipeline(object):
                 valid = False
                 raise DropItem("Missing {0}!".format(data))
         if valid:
-            if isinstance(item, CovidOntarioItem)
-            self.collection.update(dict(item))
-
+            if isinstance(item, CovidOntarioItem):
+                self.status_collection.update(
+                    {'date': item['date']}, dict(item), True)
         return item

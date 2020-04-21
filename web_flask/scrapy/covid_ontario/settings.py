@@ -14,10 +14,10 @@ BOT_NAME = 'covid_ontario'
 SPIDER_MODULES = ['covid_ontario.spiders']
 NEWSPIDER_MODULE = 'covid_ontario.spiders'
 
-
+ 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'covid_ontario (+http://www.yourdomain.com)'
-USER_AGENT = 'gogglebot'
+USER_AGENT = 'googlebot'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
@@ -69,12 +69,12 @@ ITEM_PIPELINES = {
    'covid_ontario.pipelines.MongoDBPipeline': 300,
 }
 
-MONGODB_SERVER = "mongodb+srv://juniha:Rodyroem@cluster0-naqor.mongodb.net/test?authSource=admin&replicaSet=Cluster0-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true" #mongoatlas server name from atlas
+MONGODB_SERVER = "cluster0-naqor.mongodb.net/test?authSource=admin&replicaSet=Cluster0-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true" #mongoatlas server name from atlas
 MONGODB_PORT = 27017
 MONGODB_DB = "covid_ontario"
 MONGODB_STATUS_COLLECTION = "status"
-MONGODB_USER = "root"
-MONGODB_PASS = "example"
+MONGODB_USER = "juniha"
+MONGODB_PASS = "Rodyroem"
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html

@@ -32,10 +32,10 @@ class OntarioSpider(scrapy.Spider):
 
         daily_data = {}
         for row in response.xpath('//table[1]/tbody/tr'):
-            name = row.xpath(P
+            name = row.xpath(
                 'td[1]/descendant-or-self::*/text()').get().strip()
             value = row.xpath(
-                'td[2]/descendant-or-self::*/text()'.get().strip()
+                'td[2]/descendant-or-self::*/text()').get().strip()
             for label, key in status_dict.item():
                 if name and value and label in name:
                     value = int(value.replace(',', ''))
@@ -46,24 +46,24 @@ class OntarioSpider(scrapy.Spider):
 
             
 #self.logger.warning('Daily Data %s, daily_value)
-status_item['confirmed'] = {
-    'total': daily_data['confirmed'],
-    'male': daily_data['male'],
-    'female': daily_data['female'],
-    'youth': daily_data['youth'],
-    '20-39': daily_data['20-39'],
-    '40-59': daily_data['40-59'],
-    '60-79': daily_data['60-79'],
-    'senior': daily_data['senior'],
+        status_item['confirmed'] = {
+            'total': daily_data['confirmed'],
+            'male': daily_data['male'],
+            'female': daily_data['female'],
+            'youth': daily_data['youth'],
+            '20-39': daily_data['20-39'],
+            '40-59': daily_data['40-59'],
+            '60-79': daily_data['60-79'],
+            'senior': daily_data['senior'],
 
-}
+        }
 
-status_item['decreased'] = daily_data['decreased']
-status_item['pending'] = daily_data['pending']
-status_item['resolved'] = daily_data['resolved']
-status_item['total'] = daily_data['total']
+        status_item['decreased'] = daily_data['decreased']
+        status_item['pending'] = daily_data['pending']
+        status_item['resolved'] = daily_data['resolved']
+        status_item['total'] = daily_data['total']
 
-today_date = datetime.data(datatime.now())
-date_timestamp = time.mktime(today_date.timetuple())
-status_item['date'] = date_timestamp
-yield status_item
+        today_date = datetime.data(datatime.now())
+        date_timestamp = time.mktime(today_date.timetuple())
+        status_item['date'] = date_timestamp
+        yield status_item

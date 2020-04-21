@@ -14,7 +14,7 @@ class CovidOntarioItem(scrapy.Item):
     deceased = scrapy.Field()
     confirmed = scrapy.Field()
     pending = scrapy.Field()
-    resolved = scrapy.Feild()
-    total = scrapy.Feild()
-    date = scrapy.Feild()
+    resolved = scrapy.Field()
+    total = scrapy.Field()
+    date = scrapy.Field()
     pass
