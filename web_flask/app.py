@@ -6,7 +6,7 @@ from datetime import datetime
 import pytz
 
 app = Flask(__name__)
-app.config['MONGO_URI'] = 'mongodb://admin:123@mongo:27017/covid_ontario'
+app.config['MONGO_URI'] = 'mongodb://juniha:Rodyroem@cluster0-shard-00-00-naqor.mongodb.net:27017,cluster0-shard-00-01-naqor.mongodb.net:27017,cluster0-shard-00-02-naqor.mongodb.net:27017/covid_ontario?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority'
 mongo = PyMongo(app)
 
 # time filter
@@ -16,6 +16,10 @@ def _jinja2_filter_datetime(date,fmt=None):
     native = date.replace(tzinfo=None)
     format = '%Y-%m-%d'
     return native.strftime(format)
+
+@app.route('/')
+def home():
+    return render_template('bubblechart.html')
 
 # set up your route
 @app.route('/fetch')

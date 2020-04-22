@@ -1,17 +1,17 @@
-{ % extends 'base.html' %} {% block page_content %}
+{% extends 'base.html' %}
+{% block page_content %}
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
 	This is a Fetch Result
 	{% if content %}
 	<div class="jumbotron jumbotron-fluid">
 		<div class="container">
-			<h1 class="display-4">Hello, world!</h1>
 			<h2 class="display-4">New Updates</h2>
 			<p>Fetch Status:{{ content['status'] }}</p>
 			<p>
-				{{% for daily_data in content['items'] %}}
+				{% for daily_data in content['items'] %}
 				<p>
 					<h5>Fetch Status<span
-							class="badge {{ 'badge-success'if content['status'] == 'ok' else 'badge-warning'}}">
+							class="badge {{ 'badge-success'if content['status'] == 'ok' else 'badge-warning' }}">
 							{{ content['status'] }}</span></h5>
 					<h5>Lasted Updated<span class="badge badge-secondary">{{ daily_data['date'] | strtime }}></span>
 					</h5>
