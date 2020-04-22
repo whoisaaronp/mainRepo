@@ -5,7 +5,7 @@ db.createUser(
         roles:[
             {
                 role: "readWrite",
-                db:   "movies_cms"
+                db:   "covid_ontario"
             }
         ]
     }
