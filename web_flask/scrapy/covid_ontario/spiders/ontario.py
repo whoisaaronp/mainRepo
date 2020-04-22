@@ -1,4 +1,3 @@
-
 import scrapy
 from covid_ontario.items import CovidOntarioItem
 from scrapy.utils.response import open_in_browser
@@ -13,30 +12,29 @@ class OntarioSpider(scrapy.Spider):
     def parse(self, response):
         status_item = CovidOntarioItem()
         # some debugging here, remove it when you're done
-        # self.logger.warning('Table HTML %s', response)
-        # open_in_browser(response)
+        self.logger.warning('Table HTML %s', response)
+        open_in_browser(response)
         status_dict = {
             'Number of cases': 'confirmed',
             'Resolved': 'resolved',
             'Deceased': 'deceased',
-            'Investigation': 'pending',
-            'Total': 'total',
+            'Currently under investigation': 'pending',
+            'Total tests completed': 'total',
             'Male': 'male',
             'Female': 'female',
-            '19': 'youth',
+            '19 and under': 'youth',
             '20': '20-39',
             '40': '40-59',
             '60': '60-79',
-            '80': 'senior',
+            '80 and over': 'senior',
         }
-
         daily_data = {}
         for row in response.xpath('//table[1]/tbody/tr'):
             name = row.xpath(
                 'td[1]/descendant-or-self::*/text()').get().strip()
             value = row.xpath(
                 'td[2]/descendant-or-self::*/text()').get().strip()
-            for label, key in status_dict.item():
+            for label, key in status_dict.items():
                 if name and value and label in name:
                     value = int(value.replace(',', ''))
                     # self.logger.warning('Table HTML %s', name)
@@ -44,8 +42,7 @@ class OntarioSpider(scrapy.Spider):
                     # self.logger.warning('Value HTML %s', name)
                     daily_data[key] = value
 
-            
-#self.logger.warning('Daily Data %s, daily_value)
+        self.logger.warning('Daily Data %s', daily_data)
         status_item['confirmed'] = {
             'total': daily_data['confirmed'],
             'male': daily_data['male'],
@@ -58,12 +55,12 @@ class OntarioSpider(scrapy.Spider):
 
         }
 
-        status_item['decreased'] = daily_data['decreased']
+        status_item['deceased'] = daily_data['deceased']
         status_item['pending'] = daily_data['pending']
         status_item['resolved'] = daily_data['resolved']
         status_item['total'] = daily_data['total']
 
-        today_date = datetime.data(datatime.now())
+        today_date = datetime.date(datetime.now())
         date_timestamp = time.mktime(today_date.timetuple())
         status_item['date'] = date_timestamp
         yield status_item

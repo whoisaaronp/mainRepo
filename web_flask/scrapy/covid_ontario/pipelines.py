@@ -18,7 +18,7 @@ class MongoDBPipeline(object):
             settings['MONGODB_PASS']), settings['MONGODB_SERVER'], settings['MONGODB_PORT'])
         connection = pymongo.MongoClient(uri)
         db = connection[settings['MONGODB_DB']]
-        self.collection = db[settings['MONGODB_STATUS_COLLECTION']]
+        self.status_collection = db[settings['MONGODB_STATUS_COLLECTION']]
 
     def process_item(self, item, spider):
         valid = True
