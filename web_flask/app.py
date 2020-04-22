@@ -1,13 +1,13 @@
 from flask import Flask, render_template
-# from flask_pymongo import PyMongo
+from flask_pymongo import PyMongo
 import json
 import requests
 from datetime import datetime
 import pytz
 
 app = Flask(__name__)
-# app.config['MONGO_URI'] = 'mongodb://admin:123@mongo:27017/covid_ontario'
-# mongo = PyMongo(app)
+app.config['MONGO_URI'] = 'mongodb://admin:123@mongo:27017/covid_ontario'
+mongo = PyMongo(app)
 
 # time filter
 @app.template_filter('strftime')
@@ -62,5 +62,5 @@ def fetch():
         'start_requests': True
 
     }
-    response = requests.get('http://scrapy:9000/crawl.json', params)
+    response = requests.get('http://scrapy:9080/crawl.json', params)
     return response.text
