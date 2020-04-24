@@ -79,8 +79,8 @@ def fetch():
 
     }
     response = requests.get('http://localhost:9080/crawl.json', params)
-    # return response.text
-    fetch_result = json.loads(response.text)
-    return render_template('fetch.html', content=fetch_result)
+    # fetch_result = json.loads(response.text)
+    # return render_template('fetch.html', content=fetch_result)
+    return response.text
 
     
