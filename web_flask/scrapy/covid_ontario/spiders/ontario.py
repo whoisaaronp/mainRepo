@@ -42,7 +42,7 @@ class OntarioSpider(scrapy.Spider):
                     # self.logger.warning('Value HTML %s', name)
                     daily_data[key] = value
 
-        self.logger.warning('Daily Data %s', daily_data)
+        # self.logger.warning('Daily Data %s', daily_data)
         status_item['confirmed'] = {
             'total': daily_data['confirmed'],
             'male': daily_data['male'],
