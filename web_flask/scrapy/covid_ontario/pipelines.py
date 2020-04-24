@@ -16,7 +16,7 @@ class MongoDBPipeline(object):
         settings = get_project_settings()
         uri = "mongodb://%s:%s@%s:%s" % (quote_plus(settings['MONGODB_USER']), quote_plus(
             settings['MONGODB_PASS']), settings['MONGODB_SERVER'], settings['MONGODB_PORT'])
-        connection = pymongo.MongoClient(uri)
+        connection = pymongo.MongoClient('mongodb://juniha:Rodyroem@cluster0-shard-00-00-naqor.mongodb.net:27017,cluster0-shard-00-01-naqor.mongodb.net:27017,cluster0-shard-00-02-naqor.mongodb.net:27017/covid_ontario?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority')
         db = connection[settings['MONGODB_DB']]
         self.status_collection = db[settings['MONGODB_STATUS_COLLECTION']]
 

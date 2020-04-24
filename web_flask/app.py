@@ -19,7 +19,21 @@ def _jinja2_filter_datetime(date,fmt=None):
 
 @app.route('/')
 def home():
-    return render_template('bubblechart.html')
+    status = mongo.db.status
+    status_data = []
+    for s in status.find().sort("date"):
+        status_data.append({
+            'date': _jinja2_filter_datetime(int(s.get('date'))),
+            'deceased': s.get('deceased',0),
+            'confirmed': s.get('confirmed',0),
+            'resolved': s.get('resolved',0),
+            'pending': s.get('pending',0),
+            'total': s.get('total',0),
+        })
+
+    return render_template('home.html',ontario_data=status_data)
+    # return 'test'
+
 
 # set up your route
 @app.route('/fetch')
@@ -36,7 +50,7 @@ def index():
             'total': s.get('total',0),
         })
 
-    return render_template('home.html',ontario_data=status_data)
+    return render_template('fetch.html',ontario_data=status_data)
 
 # set up your barchart
 @app.route('/bar_chart')
@@ -66,5 +80,9 @@ def fetch():
         'start_requests': True
 
     }
-    response = requests.get('http://scrapy:9080/crawl.json', params)
-    return response.text
+    response = requests.get('http://localhost:9080/crawl.json', params)
+    # return response.text
+    fetch_result = json.loads(response.text)
+    return render_template('fetch.html', content=fetch_result)
+
+    

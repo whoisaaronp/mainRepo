@@ -69,7 +69,7 @@ ITEM_PIPELINES = {
    'covid_ontario.pipelines.MongoDBPipeline': 300,
 }
 
-MONGODB_SERVER = "localhost" #mongoatlas server name from atlas
+MONGODB_SERVER = "cluster0-shard-00-00-naqor.mongodb.net:27017,cluster0-shard-00-01-naqor.mongodb.net:27017,cluster0-shard-00-02-naqor.mongodb.net:27017/covid_ontario?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority" #mongoatlas server name from atlas
 MONGODB_PORT = 27017
 MONGODB_DB = "covid_ontario"
 MONGODB_STATUS_COLLECTION = "status"
