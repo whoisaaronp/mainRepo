@@ -32,8 +32,6 @@ def home():
         })
 
     return render_template('home.html',ontario_data=status_data)
-    # return 'test'
-
 
 # set up your route
 @app.route('/fetch')
