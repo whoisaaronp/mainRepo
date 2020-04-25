@@ -1,19 +1,20 @@
 /* globals Chart:false, feather:false */
 
-(function () {
-    'use strict'
+// (function () {
+//     'use strict'
 
-    feather.replace()
+    // feather.replace()
 
     // Graphs
     var ctx = document.getElementById('myChart')
     // eslint-disable-next-line no-unused-vars
-    ontario_data = JSON.parse(ctx.dataset.status),
+        ontario_data = JSON.parse(ctx.dataset.status),
         dates = [],
         confirmed = [],
         resolved = [],
         deceased = [],
-
+        
+        console.log(ontario_data);
         ontario_data.forEach(function (daily) {
             dates.push(daily['date']);
             confirmed.push(daily['confirmed']['total'])
@@ -63,4 +64,4 @@
             }
         }
     })
-}())
+// }())
