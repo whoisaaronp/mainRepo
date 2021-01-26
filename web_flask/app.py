@@ -1,6 +1,7 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
 from flask_pymongo import PyMongo
 import json
+from pymongo import MongoClient
 import requests
 from datetime import datetime
 import pytz
@@ -79,8 +80,6 @@ def fetch():
 
     }
     response = requests.get('http://localhost:9080/crawl.json', params)
-    # fetch_result = json.loads(response.text)
-    # return render_template('fetch.html', content=fetch_result)
-    return response.text
-
-    
+    fetch_result = json.loads(response.text)
+    return render_template('fetch.html', content=fetch_result)
+    # return response.text

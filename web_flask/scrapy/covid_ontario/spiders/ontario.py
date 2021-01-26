@@ -12,8 +12,8 @@ class OntarioSpider(scrapy.Spider):
     def parse(self, response):
         status_item = CovidOntarioItem()
         # some debugging here, remove it when you're done
-        self.logger.warning('Table HTML %s', response)
-        open_in_browser(response)
+        # self.logger.warning('Table HTML %s', response)
+        # open_in_browser(response)
         status_dict = {
             'Number of cases': 'confirmed',
             'Resolved': 'resolved',
