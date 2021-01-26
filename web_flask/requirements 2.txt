@@ -1,0 +1,6 @@
+flask
+Flask-PyMongo
+requests
+scrapy
+scrapyrt
+pytz
